@@ -1,0 +1,55 @@
+baseURL: https://168yyds.github.io/
+locale: en-US
+title: Guangchen Wu
+theme: PaperMod
+enableRobotsTXT: true
+timeZone: Asia/Shanghai
+pagination:
+  pagerSize: 8
+outputs:
+  home: [HTML, RSS]
+params:
+  env: production
+  author: Guangchen Wu
+  description: Guangchen Wu (Yichi) — graduate student in power electronics at Xi’an Jiaotong University, exploring artificial intelligence, modeling, and control.
+  mainSections: [posts]
+  defaultTheme: auto
+  ShowReadingTime: true
+  ShowCodeCopyButtons: true
+  ShowPostNavLinks: true
+  ShowToc: true
+  TocOpen: false
+  hideSummary: false
+  profileMode:
+    enabled: true
+  label:
+    text: Guangchen Wu
+  assets:
+    favicon: /favicon.svg
+  footer:
+    text: Research & learning notes
+menu:
+  main:
+    - identifier: home
+      name: Home
+      url: /
+      weight: 10
+    - identifier: posts
+      name: Blog
+      url: /posts/
+      weight: 20
+    - identifier: publications
+      name: Publications
+      url: /publications/
+      weight: 25
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 30
+markup:
+  goldmark:
+    renderer:
+      unsafe: false
+  highlight:
+    noClasses: true
+    style: monokai

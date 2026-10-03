@@ -1,0 +1,23 @@
+- id: ecce-europe-2026
+  type: Conference poster
+  title: A Real-Time MCU-Embedded Deep Reinforcement Learning-Based Control Method for Interleaved Buck Converters
+  authors:
+    - Guangchen Wu
+    - Yufei Li
+    - Yu Fu
+  year: 2026
+  date: "2026-09-14"
+  venue: IEEE ECCE Europe 2026
+  conference_url: https://www.ecce-europe.org/2026/
+  conference_dates: 14–18 September 2026
+  location: Valencia, Spain
+  summary: >-
+    A model-free deep reinforcement learning framework for interleaved buck converter control,
+    combining DQN and PPO training, transfer learning for inductance variations, and
+    real-time MCU deployment with hardware-in-the-loop validation.
+  poster: /publications/ecce-europe-2026/poster.pdf
+  poster_pages: 1
+  poster_preview: /publications/ecce-europe-2026/poster-preview.webp
+  poster_full_image: /publications/ecce-europe-2026/poster-full.webp
+  poster_image_width: 1283
+  poster_image_height: 1800

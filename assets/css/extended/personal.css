@@ -1,0 +1,79 @@
+:root, :root[data-theme="light"] {
+  --main-width: 860px;
+  --nav-width: 960px;
+  --theme: #faf9f6;
+  --entry: #fff;
+  --primary: #202b26;
+  --secondary: #647069;
+  --content: #35413a;
+  --border: #dedfd7;
+  --accent: #2c654d;
+}
+:root[data-theme="dark"] {
+  --theme: #171d1a;
+  --entry: #202824;
+  --primary: #ebeee8;
+  --secondary: #abb6ae;
+  --content: #d0d8d1;
+  --border: #36423b;
+  --accent: #a2d2b5;
+}
+body { font-size: 16px; }
+body.list { background: var(--theme); }
+.header-nav { border-bottom: 1px solid var(--border); }
+.logo a { font-size: 20px; font-weight: 650; letter-spacing: -.5px; }
+#menu { column-gap: 22px; }
+#menu a { font-size: 14px; }
+#menu .active { color: var(--accent); }
+.personal-home { padding: 56px 0 16px; }
+.intro-topline { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.eyebrow, .section-note { font-size: 11px; line-height: 1.6; letter-spacing: 1.5px; color: var(--secondary); }
+.monogram { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 50px; height: 50px; border: 1px solid var(--border); border-radius: 50%; color: var(--accent); font-family: Georgia, serif; font-size: 19px; }
+.home-intro h1 { margin: 20px 0 6px; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(38px, 6vw, 58px); font-weight: 400; line-height: 1.15; letter-spacing: -1.9px; }
+.name-alias { color: var(--secondary); font-size: .55em; white-space: nowrap; letter-spacing: -.7px; }
+.intro-role { color: var(--secondary); font-size: 14px; margin-bottom: 27px; }
+.intro-copy { color: var(--content); max-width: 730px; font-size: 17px; line-height: 1.85; }
+.intro-copy p + p { margin-top: 16px; }
+.intro-copy strong { color: var(--primary); font-weight: 600; }
+.home-links { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; margin-top: 28px; font-size: 14px; }
+.home-links a { padding: 9px 0; }
+.home-links a span { margin-left: 7px; }
+.home-links .primary-link { color: var(--theme); background: var(--primary); padding: 11px 17px; border-radius: 5px; }
+.home-links a:not(.primary-link):hover, .all-notes:hover, .note-item a:hover { color: var(--accent); }
+.home-section { margin-top: 52px; }
+.section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+.section-heading h2 { font-size: 20px; font-weight: 600; letter-spacing: -.4px; }
+.research-item { display: flex; gap: 23px; padding: 19px 0; border-bottom: 1px solid var(--border); }
+.research-number { flex: 0 0 20px; white-space: nowrap; font-size: 12px; color: var(--accent); padding-top: 4px; font-variant-numeric: tabular-nums; }
+.research-item > div { flex: 1; min-width: 0; }
+.research-item h3 { font-size: 16px; font-weight: 600; margin-bottom: 3px; }
+.research-item p { font-size: 14px; color: var(--secondary); line-height: 1.65; }
+.all-notes { font-size: 13px; color: var(--secondary); white-space: nowrap; }
+.note-item { display: grid; grid-template-columns: 112px 1fr; gap: 23px; padding: 24px 0; border-bottom: 1px solid var(--border); }
+.note-item time { font-size: 12px; color: var(--secondary); padding-top: 4px; }
+.note-item h3 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+.note-item h3 span { font-size: 14px; color: var(--secondary); }
+.note-item p { font-size: 14px; color: var(--secondary); line-height: 1.7; }
+.home-personal { color: var(--secondary); font-size: 12px; margin-top: 28px; }
+.footer { font-size: 11px; padding-top: 40px; }
+.page-header { margin-top: 30px; }
+.page-header h1, .post-title { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; letter-spacing: -1px; }
+.post-entry { border-radius: 6px; }
+.post-content { font-size: 17px; line-height: 1.85; }
+.post-content a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+@media (max-width: 600px) {
+  .personal-home { padding-top: 28px; }
+  .eyebrow { max-width: 230px; font-size: 10px; }
+  .home-intro h1 { letter-spacing: -1.4px; }
+  .intro-role { max-width: 290px; line-height: 1.8; }
+  .intro-copy, .post-content { font-size: 16px; }
+  .section-note { display: none; }
+  .home-links { gap: 16px; font-size: 13px; }
+  .home-section { margin-top: 38px; }
+  .note-item { grid-template-columns: 1fr; gap: 6px; }
+  .logo a { font-size: 18px; }
+  .header-nav { column-gap: 10px; }
+  #menu { column-gap: 14px; }
+  #menu a { font-size: 13px; }
+}

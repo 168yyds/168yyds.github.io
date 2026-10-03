@@ -1,0 +1,12 @@
+<ol class="news-timeline">
+  {{ range . }}
+  <li class="news-item">
+    <time datetime="{{ .date }}">{{ .display_date | default (time.Format "Jan 2006" .date) }}</time>
+    <div class="news-content">
+      <h3>{{ .title }}</h3>
+      <p>{{ .text | markdownify }}</p>
+      {{ if .link }}<a class="news-link" href="{{ .link | relURL }}">{{ .link_text | default "Read more" }} <span aria-hidden="true">→</span></a>{{ end }}
+    </div>
+  </li>
+  {{ end }}
+</ol>

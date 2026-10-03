@@ -1,0 +1,67 @@
+{{ define "main" }}
+<article class="publications-page">
+  <header class="post-header page-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+    <p class="post-description">{{ .Description }}</p>
+  </header>
+  {{ $year := 0 }}
+  {{ range sort hugo.Data.publications "date" "desc" }}
+    {{ if ne $year .year }}
+      <h2 class="publication-year">{{ .year }}</h2>
+      {{ $year = .year }}
+    {{ end }}
+    <article class="publication-entry" id="{{ .id }}" aria-labelledby="{{ .id }}-title">
+      <div class="publication-type">{{ with .type }}{{ . | upper }}{{ else }}{{ if .paper }}CONFERENCE PAPER{{ else }}CONFERENCE POSTER{{ end }}{{ end }}</div>
+      <h3 id="{{ .id }}-title">{{ .title }}</h3>
+      <p class="publication-authors">{{ range $index, $author := .authors }}{{ if $index }}, {{ end }}{{ if eq $author site.Params.author }}<strong>{{ $author }}</strong>{{ else }}{{ $author }}{{ end }}{{ end }}</p>
+      <p class="publication-venue"><a href="{{ .conference_url }}" target="_blank" rel="noopener noreferrer">{{ .venue }}</a> · {{ .location }}</p>
+      <p class="publication-dates">{{ .conference_dates }}</p>
+      {{ with .summary }}<p class="publication-summary">{{ . }}</p>{{ end }}
+      <div class="publication-actions">
+        {{ with .paper }}<a href="{{ . | relURL }}" target="_blank" rel="noopener">Paper <span class="file-format">PDF</span> <span aria-hidden="true">↗</span></a>{{ end }}
+        {{ with .poster }}<a href="{{ . | relURL }}" target="_blank" rel="noopener">Poster <span class="file-format">PDF</span> <span aria-hidden="true">↗</span></a>{{ end }}
+        {{ with .conference_url }}<a href="{{ . }}" target="_blank" rel="noopener noreferrer">Conference <span aria-hidden="true">↗</span></a>{{ end }}
+      </div>
+      <div class="publication-previews{{ if not (and .paper_preview .poster_preview) }} single-preview{{ end }}">
+        {{ if .paper_preview }}
+        <a class="publication-preview" href="{{ .paper | relURL }}" target="_blank" rel="noopener" aria-label="Open paper PDF: {{ .title }}">
+          <div class="preview-image"><img src="{{ .paper_preview | relURL }}" alt="First page of {{ .title }}" width="1100" height="1422" loading="lazy"></div>
+          <div class="preview-caption"><span>Full paper</span><span>{{ .paper_pages }} pages · PDF ↗</span></div>
+        </a>
+        {{ end }}
+        {{ if .poster_preview }}
+        <a class="publication-preview" href="{{ .poster | relURL }}" target="_blank" rel="noopener" aria-label="Open poster PDF: {{ .title }}">
+          <div class="preview-image"><img src="{{ .poster_preview | relURL }}" alt="Conference poster for {{ .title }}" width="1069" height="1500" loading="lazy"></div>
+          <div class="preview-caption"><span>Conference poster</span><span>{{ .poster_pages }} page · PDF ↗</span></div>
+        </a>
+        {{ end }}
+      </div>
+      {{ if .paper_images }}
+      <details class="publication-reader">
+        <summary>Read the paper on this page</summary>
+        <div class="paper-page-list">
+          {{ $paperTitle := .title }}
+          {{ $pageCount := len .paper_images }}
+          {{ $imageWidth := .paper_image_width }}
+          {{ $imageHeight := .paper_image_height }}
+          {{ range $index, $image := .paper_images }}
+          <figure class="paper-page">
+            <img src="{{ $image | relURL }}" alt="{{ $paperTitle }}, page {{ add $index 1 }} of {{ $pageCount }}"{{ with $imageWidth }} width="{{ . }}"{{ end }}{{ with $imageHeight }} height="{{ . }}"{{ end }} loading="lazy">
+            <figcaption>Page {{ add $index 1 }} of {{ $pageCount }}</figcaption>
+          </figure>
+          {{ end }}
+        </div>
+        <p><a href="{{ .paper | relURL }}" target="_blank" rel="noopener">Open the original PDF</a> for selectable text and full-resolution figures.</p>
+      </details>
+      {{ end }}
+      {{ if .poster_full_image }}
+      <details class="publication-reader">
+        <summary>View the poster on this page</summary>
+        <div class="poster-full-image"><img src="{{ .poster_full_image | relURL }}" alt="Complete conference poster for {{ .title }}"{{ with .poster_image_width }} width="{{ . }}"{{ end }}{{ with .poster_image_height }} height="{{ . }}"{{ end }} loading="lazy"></div>
+        <p><a href="{{ .poster | relURL }}" target="_blank" rel="noopener">Open the original poster PDF</a> for full-resolution viewing.</p>
+      </details>
+      {{ end }}
+    </article>
+  {{ end }}
+</article>
+{{ end }}
